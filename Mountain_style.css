@@ -1,0 +1,174 @@
+body {
+  background: #5D7C8C; 
+  margin: 0;
+  height: auto;
+}
+.scene {
+  position: relative;
+  width: 800px;
+  height: 4000px;
+  margin: 0 auto;
+}
+.foot_stone_1{
+  position: absolute;
+  bottom: 0px;
+  left: 285px;  
+  width: 55px;
+  height: 23px;
+  z-index: 1;
+  cursor: pointer; 
+  background: url('/Images/Foot_stone.png') no-repeat center/cover;
+}
+.foot_stone_1:hover {
+    background-image: url("/Images/Foot_stone_hover.png");
+}
+.foot_stone_2{
+  position: absolute;
+  bottom: 157px;
+  left: 400px;  
+  width: 55px;
+  height: 23px;
+  z-index: 1;
+  cursor: pointer;  
+  background: url('/Images/Foot_stone.png') no-repeat center/cover;
+}
+.foot_stone_2:hover {
+    background-image: url("/Images/Foot_stone_hover.png");
+}
+.text-box {
+    position: absolute;
+    bottom: 0px;
+    left: 0px; 
+    width: 142px;
+    height: 48px;
+    font-size: 16px;
+    z-index: 10;
+    opacity: 0;
+    margin-bottom: 10px;
+    background-image: url("/Images/Text_box.png");
+}
+.stone_text {
+    position: absolute;
+    top: 10px;
+    left: 10px; 
+    width: 100px;
+    height: 30px;
+    font-size: 14px;
+    opacity: 1;
+    z-index: 11;
+    color: #000000;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+.textBox::-webkit-scrollbar { 
+    display: none;
+}
+.hand_stone_1{
+  position: absolute;
+  bottom: 544px;
+  left: 175px;  
+  width: 100px;
+  height: 23px;
+  z-index: 1;
+  background: url('/Images/Hand_stone.png') no-repeat center/cover;
+}
+.hand_stone_2{
+  position: absolute;
+  bottom: 500px;
+  left: 480px;  
+  width: 100px;
+  height: 23px;
+  z-index: 1;
+  background: url('/Images/Hand_stone.png') no-repeat center/cover;
+}
+.character {
+  position: absolute;
+  bottom: 22px;
+  left: 200px;  
+  width: 348.02px;
+  height: 578px;
+  z-index: 2;
+  opacity: 1;
+  pointer-events: none;
+  /*background: url('/Images/Character.png') no-repeat center/cover;*/
+}
+.hair{
+  position: absolute;
+  left: 115px;
+  width: 102px;
+  height: 122px;
+  z-index: 3;
+  background: url('/Images/Character_left/Hair.png') no-repeat center/cover;
+  opacity: 1;
+}
+.eye{
+  position: absolute;
+  top: 60px;
+  left: 117px;
+  width: 7px;
+  height: 14px;
+  z-index: 3;
+  opacity: 1;
+  background: url('/Images/Character_left/Eye.png') no-repeat center/cover;
+}
+.shirt{
+  position: absolute;
+  top: 124px;
+  left: 77px;
+  width: 153px;
+  height: 125.5px;
+  opacity: 1;
+  z-index: 3;
+  background: url('/Images/Character_left/Shirt.png') no-repeat center/cover;
+}
+.pants{
+  position: absolute;
+  bottom: 35px;
+  left: 97px;
+  width: 177px;
+  height: 299.5px;
+  z-index: 3;
+  opacity: 1;
+  background: url('/Images/Character_left/Pants.png') no-repeat center/cover;
+}
+.skin{
+  position: absolute;
+  top: 5px;
+  left: 0px; 
+  width: 343.02px;
+  height: 192.55px;
+  z-index: 2;
+  background: url('/Images/Character_left/Skin.png') no-repeat center/cover;
+  opacity: 1;
+}
+.shoes{
+  position: absolute;
+  bottom: 0px;
+  left: 89px;
+  width: 206.5px;
+  height: 188px;
+  z-index: 3;
+  opacity: 1;
+  background: url('/Images/Character_left/Shoes.png') no-repeat center/cover;
+}
+.accessories{
+  position: absolute;
+}
+.not_change{
+  position: absolute;
+  top: 40px;
+  left: 112px;
+  width: 41.5px;
+  height: 37.5px;
+  z-index: 3;
+  opacity: 1;
+  background: url('/Images/Character_left/Not_change.png') no-repeat center/cover;
+}
+.back {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 80px;   /* set width */
+    height: 60px; 
+    background: url('/Images/Back.png') no-repeat center/cover;
+}

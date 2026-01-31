@@ -1,0 +1,36 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <div id="name"><p id="namee">Mountain</p></div>
+        <div>    
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mountain login</title>
+    </div>
+    <link rel="stylesheet" href="Mountain_login_style.css">
+</head>
+<body>
+    <div class="inputgr" id="Email">
+        <input id="email" type="text" required oninput="validateInput(this)">
+        <label for="">Email</label>
+    </div>
+    
+    <div class="inputgr" id="password">
+        <input id="pass" type="password" required oninput="validateInput(this)">
+        <label for="">Password</label>
+    </div>
+
+    <div class="inputgrb" id="butt">
+        <button id="button" onclick="login()">Login</button>
+    </div>
+    <div id="registerLink">
+        <p>If you don't have an account <a href="Mountain_register_main.html">click here</a></p>
+    </div>
+    <div class="error" id="Message">
+        <label id="errorlabel"></label>
+    </div>
+    <script src="Mountain_login_script.js" defer></script>
+</body>
+</html>

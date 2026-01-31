@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <div id="name1"><p id="namee1">Mountain</p></div>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mountain registration</title>
+        <link rel="stylesheet" href="Mountain_register_style.css">
+    </div>
+</head>
+<body>    
+    <div class="inputgr" id="registerUsername">
+        <input id="regUser" type="text" required oninput="validateInput(this)">
+        <label for="">Username</label>
+    </div>
+
+    <div class="inputgr" id="registerEmail">
+        <input id="regEm" type="text" required oninput="validateInput(this)">
+        <label for="">Email</label>
+    </div>
+
+    <div class="inputgr" id="registerPassword">
+        <input id="regPass" type="password" required oninput="validateInput(this)">
+        <label for="">Password</label>
+    </div>
+
+    <div class="inputgr" id="registerPasswordConfirm">
+        <input id="regPassConfirm" type="password" required oninput="validateInput(this)">
+        <label for="">Confirm Password</label>
+    </div>
+    <div class="inputgrb">
+        <button type="button" id="registerButton" onclick="register()">Register</button>
+    </div>
+    
+    <div class="error" id="registerMessage">
+        <label id="errorlabel"></label>
+    </div>
+    <script src="Mountain_register_script.js"></script>
+</body>
+</html>
