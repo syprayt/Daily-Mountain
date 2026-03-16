@@ -20,3 +20,36 @@ body {
   transform: translate(-50%, -50%);
   background: url('/Images/Mountain.png') no-repeat center/cover;
 }
+.Profile{
+  position: fixed;
+  right: 1.5%;
+}
+.Email{
+  position: fixed;
+  right: 22px;
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.Email:hover {
+  color: #014181;
+}
+.Arrow{
+  position: fixed;
+  top: 8px;
+  right: 10px;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+  background: url('/Images/Down.png') no-repeat center/cover;
+}
+.Logout{
+  position: fixed;
+  right: 5px;
+  padding: 5px;
+  top: 30px;
+  border-radius: 12px;
+  background-color: white;
+  cursor: pointer;
+  opacity: 0;
+}

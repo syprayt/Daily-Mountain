@@ -1,12 +1,195 @@
 {
   "users": [
+    {},
     {
-
+      "username": "syprayt",
+      "password": "$2b$10$8wWrh.fwGKtaL0E4P7PMVuppqUeDg8qbQz4ICQUwmp1PVY7GPVy7q",
+      "email": "sypersyprayt@gmail.com",
+      "mountain": [
+        {
+          "image": "/Images/Mountain.png",
+          "days": []
+        }
+      ],
+      "character": [
+        {
+          "hair": "/Images/Hair1.png",
+          "eyes": "/Images/Eyes1.png",
+          "shirt": "/Images/Shirt1.png",
+          "pants": "/Images/Pants1.png",
+          "skin": "/Images/Skin1.png",
+          "shoes": "/Images/Shoes1.png",
+          "accessories": "/Images/Accessory1.png"
+        }
+      ]
+    },
+    {
+      "username": "sy",
+      "password": "$2b$10$l0yganS76rKonMeS3oU5NelN7uvy3BOzc/bS/T6FdhVseuUHflNhy",
+      "email": "sy",
+      "mountain": [
+        {
+          "image": "/Images/Mountain.png",
+          "days": []
+        }
+      ],
+      "character": [
+        {
+          "hair": "/Images/Hair1.png",
+          "eyes": "/Images/Eyes1.png",
+          "shirt": "/Images/Shirt1.png",
+          "pants": "/Images/Pants1.png",
+          "skin": "/Images/Skin1.png",
+          "shoes": "/Images/Shoes1.png",
+          "accessories": "/Images/Accessory1.png"
+        }
+      ]
+    },
+    {
+      "username": "syprayts",
+      "password": "$2b$10$CAzIItshceSmUudAO.sRNeXmtkAN7mSiiWJjBs2qtJY1Me31g3ULe",
+      "email": "AAA",
+      "mountain": [
+        {
+          "image": "/Images/Mountain.png",
+          "days": [
+            {
+              "text": "",
+              "date": "2026-02-26T10:12:56.609Z"
+            },
+            {
+              "date": "2026-02-26",
+              "text": ""
+            },
+            {
+              "date": "2026-02-28",
+              "text": ""
+            }
+          ]
+        }
+      ],
+      "character": [
+        {
+          "hair": "/Images/Hair1.png",
+          "eyes": "/Images/Eyes1.png",
+          "shirt": "/Images/Shirt1.png",
+          "pants": "/Images/Pants1.png",
+          "skin": "/Images/Skin1.png",
+          "shoes": "/Images/Shoes1.png",
+          "accessories": "/Images/Accessory1.png"
+        }
+      ]
+    },
+    {
+      "username": "sypa",
+      "password": "$2b$10$WEQ7umf.UIBtC5317HVHHONxu8xvr33oTSQnUE/eJYgo.HFq6pi4O",
+      "email": "a",
+      "mountain": [
+        {
+          "image": "/Images/Mountain.png",
+          "days": [
+            {
+              "text": "AAA",
+              "date": "2026-02-26"
+            },
+            {
+              "date": "2026-03-01",
+              "text": ""
+            },
+            {
+              "date": "2026-03-03",
+              "text": ""
+            },
+            {
+              "date": "2026-03-04",
+              "text": ""
+            },
+            {
+              "date": "2026-03-05",
+              "text": ""
+            },
+            {
+              "date": "2026-03-07",
+              "text": ""
+            },
+            {
+              "date": "2026-03-08",
+              "text": ""
+            },
+            {
+              "date": "2026-03-09",
+              "text": ""
+            },
+            {
+              "date": "2026-03-10",
+              "text": ""
+            },
+            {
+              "date": "2026-03-11",
+              "text": ""
+            },
+            {
+              "date": "2026-03-12",
+              "text": ""
+            },
+            {
+              "date": "2026-03-13",
+              "text": ""
+            },
+            {
+              "date": "2026-03-14",
+              "text": ""
+            },
+            {
+              "date": "2026-03-15",
+              "text": ""
+            }
+          ]
+        }
+      ],
+      "character": [
+        {
+          "hair": "/Images/Hair1.png",
+          "eyes": "/Images/Eyes1.png",
+          "shirt": "/Images/Shirt1.png",
+          "pants": "/Images/Pants1.png",
+          "skin": "/Images/Skin1.png",
+          "shoes": "/Images/Shoes1.png",
+          "accessories": "/Images/Accessory1.png"
+        }
+      ]
     }
   ],
   "refreshTokens": [
     {
-
+      "email": "a",
+      "tokenHash": "$2b$10$gnwoQj.UuuXA7XZEPn4ChOuKDNx2DWUTiFnR0I/KkAer1TZDyoAwC",
+      "date": "2026-03-17"
+    },
+    {
+      "email": "a",
+      "tokenHash": "$2b$10$j3c4RVRMm9CcC61d.38c6.yY5CcxEWFtjaDKdgI16GiAXsCNjcDHy",
+      "date": "2026-03-19"
+    },
+    {
+      "email": "a",
+      "tokenHash": "$2b$10$VybwEODeGPIwKv4qHMc21uRJmBIZiLmXTI1vSY16KmvQrW2ymJDeW",
+      "date": "2026-03-19"
+    },
+    {
+      "email": "a",
+      "tokenHash": "$2b$10$7q7NnFlUQh4YsMrqDRoo3ufDl64d.1BCG14h4KF/aKOtGAgcA5Fse",
+      "date": "2026-03-28"
+    },
+    {
+      "email": "a",
+      "tokenHash": "$2b$10$7e54r8t2BvgSiXRuyjn.deuBlbKXLIv5FGWXAMGQB307Qb5aZJi2W",
+      "date": "2026-03-28"
+    },
+    {
+      "email": "a",
+      "tokenHash": "$2b$10$RMmTnOKc12.n.wnaObKdmOWja4FQ4foYhmA8Z3sWleeoMTMf2pT4W",
+      "date": "2026-03-29"
     }
   ]
 }

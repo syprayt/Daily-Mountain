@@ -19,6 +19,7 @@ body {
 }
 
 #namee1 {color: rgb(179, 179, 179);
+    cursor: pointer;
     font-size:555%;
 }
 
@@ -107,4 +108,20 @@ body {
 .error {
     color: rgb(212, 17, 17);
     font-size: 26px;
+}
+
+#LoginLink {
+    margin-top: 15px;
+    font-size: 20px;
+    color: rgb(238, 238, 238);
+    text-decoration: none;
+}
+#LoginLink a {
+    color: rgb(7, 51, 95);
+    text-decoration: none;
+}
+
+#LoginLink a:visited {
+    color: rgb(7, 51, 95);
+    text-decoration: none;
 }

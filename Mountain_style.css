@@ -9,6 +9,14 @@ body {
   height: 4000px;
   margin: 0 auto;
 }
+.ground{
+  position: absolute;
+  bottom: -23px;
+  width: 100%;
+  height: 46px;
+  z-index: 3;
+  background: url('/Images/Ground.png') no-repeat center/cover;
+}
 .foot_stone_1{
   position: absolute;
   bottom: 0px;
@@ -16,7 +24,8 @@ body {
   width: 55px;
   height: 23px;
   z-index: 1;
-  cursor: pointer; 
+  font-size: 16px;
+  /*cursor: pointer; */
   background: url('/Images/Foot_stone.png') no-repeat center/cover;
 }
 .foot_stone_1:hover {
@@ -24,23 +33,35 @@ body {
 }
 .foot_stone_2{
   position: absolute;
-  bottom: 157px;
+  bottom: 0px;
   left: 400px;  
   width: 55px;
   height: 23px;
   z-index: 1;
-  cursor: pointer;  
+  /*cursor: pointer;  */
   background: url('/Images/Foot_stone.png') no-repeat center/cover;
 }
 .foot_stone_2:hover {
     background-image: url("/Images/Foot_stone_hover.png");
+}
+.Date{
+  position: absolute;
+    bottom: -12px;
+    left: 1px;
+    width: 80px;
+    height: 20px;
+    font-size: 10px;
+    color: rgb(213, 213, 213);
+    font-family: "Poppins", sans-serif;
+    z-index: 100;
+    margin-bottom: 10px;
 }
 .text-box {
     position: absolute;
     bottom: 0px;
     left: 0px; 
     width: 142px;
-    height: 48px;
+    height: 248px;
     font-size: 16px;
     z-index: 10;
     opacity: 0;
@@ -52,7 +73,7 @@ body {
     top: 10px;
     left: 10px; 
     width: 100px;
-    height: 30px;
+    height: 190px;
     font-size: 14px;
     opacity: 1;
     z-index: 11;
@@ -60,12 +81,42 @@ body {
     overflow-y: auto;
     scrollbar-width: none;
 }
+.Edit{
+  position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 25px;
+    height: 25px;
+    opacity: 1;
+    z-index: 16;
+    background: url("/Images/Edit.png") no-repeat center/cover;
+}
+.Yes{
+  position: absolute;
+    bottom: 10px;
+    left: 50px;
+    width: 25px;
+    height: 25px;
+    opacity: 0;
+    z-index: 15;
+    background: url("/Images/Yes.png") no-repeat center/cover;
+}
+.No{
+  position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 25px;
+    height: 25px;
+    opacity: 0;
+    z-index: 15;
+    background: url("/Images/No.png") no-repeat center/cover;
+}
 .textBox::-webkit-scrollbar { 
     display: none;
 }
 .hand_stone_1{
   position: absolute;
-  bottom: 544px;
+  bottom: 500px;
   left: 175px;  
   width: 100px;
   height: 23px;
@@ -74,7 +125,7 @@ body {
 }
 .hand_stone_2{
   position: absolute;
-  bottom: 500px;
+  bottom: 544px;
   left: 480px;  
   width: 100px;
   height: 23px;
@@ -168,7 +219,8 @@ body {
     position: fixed;
     top: 10px;
     left: 10px;
-    width: 80px;   /* set width */
+    width: 80px;
     height: 60px; 
+    z-index: 30;
     background: url('/Images/Back.png') no-repeat center/cover;
 }

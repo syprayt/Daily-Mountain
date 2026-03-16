@@ -4,30 +4,40 @@ const fs = require("fs");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
 
 function generateAccessToken(user) {
   return jwt.sign(
-    { id: user.email, username: user.username },
+    { email: user.email, username: user.username },
     process.env.JWT_ACCESS_SECRET,
-    { expiresIn: "15m" },
+    { expiresIn: "1m" },
   );
 }
 
 function generateRefreshToken(user) {
-  return jwt.sign({ id: user.email }, process.env.JWT_REFRESH_SECRET, {
+  return jwt.sign({ email: user.email }, process.env.JWT_REFRESH_SECRET, {
     expiresIn: "14d",
   });
 }
 
-function saveRefreshToken(userId, tokenHash) {
+function saveRefreshToken(email, tokenHash) {
   const db = readDB();
-  db.refreshTokens.push({ userId, tokenHash });
+  const d = new Date();
+  d.setDate(d.getDate() + 14);
+  const date = d.toISOString().split("T")[0];
+  db.refreshTokens.push({ email, tokenHash, date });
   writeDB(db);
 }
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:5500", "http://127.0.0.1:5500"],
+    credentials: true,
+  }),
+);
 app.use(express.json());
+app.use(cookieParser());
 app.listen(3000);
 
 function readDB() {
@@ -39,17 +49,22 @@ function writeDB(db) {
   fs.writeFileSync("Database.json", JSON.stringify(db, null, 2));
 }
 async function addUser(username, password, email) {
+  const d = new Date();
+  const date = d.toISOString().split("T")[0];
   const db = await readDB();
-  const userId = Date.now();
   db.users.push({
-    id: userId,
     username: username,
     password: password,
     email: email,
     mountain: [
       {
         image: "/Images/Mountain.png",
-        days: [],
+        days: [
+          {
+            text: "",
+            date: date,
+          },
+        ],
       },
     ],
     character: [
@@ -67,6 +82,13 @@ async function addUser(username, password, email) {
   await writeDB(db);
   return null;
 }
+setInterval(
+  () => {
+    console.log("Cleaning expired refresh tokens...");
+    removeExpiredTokens();
+  },
+  24 * 60 * 60 * 1000,
+);
 
 function findUserByUsername(username) {
   const db = readDB();
@@ -82,7 +104,7 @@ function auth(req, res, next) {
   const token = req.headers.authorization?.split(" ")[1];
   if (!token) return res.sendStatus(401);
 
-  jwt.verify(token, process.env.ACCESS_SECRET, (err, user) => {
+  jwt.verify(token, process.env.JWT_ACCESS_SECRET, (err, user) => {
     if (err) return res.sendStatus(403);
     req.user = user;
     next();
@@ -126,7 +148,13 @@ app.post("/login", async (req, res) => {
     }
     const accessToken = generateAccessToken(user);
     const refreshToken = generateRefreshToken(user);
-    await saveRefreshToken(user.id, hash(refreshToken));
+    await saveRefreshToken(user.email, bcrypt.hashSync(refreshToken, 10));
+    res.cookie("refreshToken", refreshToken, {
+      httpOnly: true, // cannot be read by JS
+      secure: false, // HTTPS only (use false in local dev)
+      sameSite: "lax", // CSRF protection
+      maxAge: 14 * 24 * 60 * 60 * 1000,
+    });
     return res.json({ accessToken });
   } catch (error) {
     console.error("Error during login:", error);
@@ -135,21 +163,91 @@ app.post("/login", async (req, res) => {
 });
 
 app.post("/refresh", (req, res) => {
-  const { refreshToken } = req.body;
+  const refreshToken = req.cookies.refreshToken;
   if (!refreshToken) return res.sendStatus(401);
+  let decoded; /*
+  const decoded = jwt.decode(refreshToken);
+  console.log(decoded);
+  console.log("Current time:", Math.floor(Date.now() / 1000));*/
+  try {
+    decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET);
+  } catch (err) {
+    //console.log("JWT ERROR:", err.message);
+    return res.sendStatus(403);
+  }
 
   const db = readDB();
-  const user = db.users.find((u) => u.refreshToken === refreshToken);
+  const validToken = db.refreshTokens.find((t) =>
+    bcrypt.compareSync(refreshToken, t.tokenHash),
+  );
+  if (!validToken) return res.sendStatus(405);
+
+  const user = db.users.find((u) => u.email === decoded.email);
   if (!user) return res.sendStatus(403);
-
-  jwt.verify(refreshToken, process.env.REFRESH_SECRET, (err) => {
-    if (err) return res.sendStatus(403);
-
-    const newAccessToken = generateAccessToken(user);
-    res.json({ accessToken: newAccessToken });
-  });
+  const newAccessToken = generateAccessToken(user);
+  res.json({ accessToken: newAccessToken });
 });
 
 app.get("/profile", auth, (req, res) => {
-  res.json({ message: `Hello ${req.user.username}` });
+  res.json({ email: req.user.email });
+});
+
+app.get("/logout", auth, (req, res) => {
+  const db = readDB();
+  const email = req.user.email;
+  db.refreshTokens = db.refreshTokens.filter((t) => t.email != email);
+  writeDB(db);
+  res.clearCookie("refreshToken", {
+    httpOnly: true,
+    secure: false,
+    sameSite: "lax",
+  });
+  res.sendStatus(200);
+});
+
+app.get("/days", auth, (req, res) => {
+  const db = readDB();
+
+  const user = db.users.find((u) => u.email === req.user.email);
+
+  if (!user) return res.sendStatus(404);
+
+  const today = new Date().toISOString().split("T")[0];
+
+  const days = user.mountain[0].days;
+
+  if (days[days.length - 1].date !== today) {
+    let current = new Date(days[days.length - 1].date);
+    while (true) {
+      current.setDate(current.getDate() + 1);
+      const dateStr = current.toISOString().split("T")[0];
+
+      if (dateStr > today) break;
+
+      days.push({
+        date: dateStr,
+        text: "",
+      });
+    }
+    /*
+    days.push({
+      date: today,
+      text: "",
+    });
+    */
+    writeDB(db);
+  }
+
+  res.json(days);
+});
+
+app.post("/note", auth, (req, res) => {
+  const db = readDB();
+  const { day, text } = req.body;
+  const user = db.users.find((u) => u.email === req.user.email);
+  if (!user) return res.sendStatus(404);
+  const days = user.mountain[0].days;
+  days[day].text = text;
+  writeDB(db);
+  res.sendStatus(200);
 });
